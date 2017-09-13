@@ -1,6 +1,6 @@
 <h2>{{list.name}}<h2>
-    <span class="glyphicon glyphicon-trash"></span>
-    <span class="glyphicon glyphicon-edit"></span>
+    <span class="glyphicon glyphicon-remove" ng-click="deleteList()"></span>
+    <span class="glyphicon glyphicon-edit" ng-click="editList()"></span>
 <table class="table table-bordered">
   <tr>
       <th>Name</th>
@@ -15,8 +15,8 @@
     <td> {{contact.email}} </td>
     <td> {{contact.phone}} </td>
     <td>
-        <span class="glyphicon glyphicon-remove"></span>
-        <span class="glyphicon glyphicon-edit"></span>
+        <span class="glyphicon glyphicon-remove" ng-click="deleteContactFromList(contact.id)"></span>
+        <span class="glyphicon glyphicon-edit"  ng-click="editContactFromList(contact.id)"></span>
     </td>
   </tr>
 </table>

@@ -62,5 +62,18 @@ angular.module('iaw2017App')
 
         this.getList = function(id) {
             return lists[0];
-        }
+        };
+
+        this.deleteList = function(id) {
+
+        };
+
+        this.deleteContactFromList = function(listId, contactId) {
+
+        };
+
+        this.saveList = function(list) {
+
+        };
+
     });

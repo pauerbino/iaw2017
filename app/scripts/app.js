@@ -19,11 +19,6 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'vm'
-      })
       .when('/contacts', {
         templateUrl: 'views/contacts.html',
         controller: 'ContactsCtrl',
@@ -31,12 +26,12 @@ angular
       })
       .when('/newList', {
         templateUrl: 'views/newList.html',
-        controller: 'newListCtrl',
+        controller: 'NewListCtrl',
         controllerAs: 'vm'
       })
       .when('/newContact', {
         templateUrl: 'views/newContact.html',
-        controller: 'newContactCtrl',
+        controller: 'NewContactCtrl',
         controllerAs: 'vm'
       })
       .when('/contactList/:id', {
@@ -45,6 +40,6 @@ angular
         controllerAs: 'vm'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/contacts'
       });
   });
