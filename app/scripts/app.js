@@ -39,6 +39,26 @@ angular
         controller: 'ContactListCtrl',
         controllerAs: 'vm'
       })
+      .when('/myContacts', {
+        templateUrl: 'views/myContacts.html',
+        controller: 'MyContactsCtrl',
+        controllerAs: 'vm'
+      })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'vm'
+      })
+      .when('/newCampaign', {
+        templateUrl: 'views/newCampaign.html',
+        controller: 'NewCampaignCtrl',
+        controllerAs: 'vm'
+      })
+      .when('/myCampaigns', {
+        templateUrl: 'views/myCampaigns.html',
+        controller: 'MyCampaignsCtrl',
+        controllerAs: 'vm'
+      })
       .otherwise({
         redirectTo: '/contacts'
       });

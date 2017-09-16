@@ -8,7 +8,9 @@ angular.module('iaw2017App')
     $scope.searchSelectAllModel = [];
 
     function initialize() {
-        $scope.lists = ListService.getLists();
+        ListService.getLists().then(function (lists){
+            $scope.lists = lists;
+        });
     }
 
     initialize();

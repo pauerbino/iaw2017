@@ -1,6 +1,6 @@
 'use strict';
 angular.module('iaw2017App')
-    .service('ListService', function () {
+    .service('ListService', ["$q", "$timeout", function ($q, $timeout) {
         var lists = [
             {
                 name: 'List1',
@@ -30,7 +30,7 @@ angular.module('iaw2017App')
                 ]
             },{
                 name: 'List2',
-                list: 2,
+                id: 2,
                 contacts: [
                     {
                         id: 1,
@@ -57,11 +57,32 @@ angular.module('iaw2017App')
             }];
 
         this.getLists = function() {
-            return lists;
+            var deferred = $q.defer();
+
+            $timeout(function() {
+                deferred.resolve(lists);
+            }, 500);
+
+            return deferred.promise;
+            //return lists;
         };
 
-        this.getList = function(id) {
-            return lists[0];
+        this.getList = function(idList) {
+            var deferred = $q.defer();
+            var result = lists.filter(function (list) {
+                return (list.id == idList)
+            });
+            
+            $timeout(function() {
+                deferred.resolve(result[0]);
+            }, 500);
+
+            return deferred.promise;
+
+          //  return lists.filter(function (list) {
+            //    return (list.id == id)
+            //});
+            //return lists[0];
         };
 
         this.deleteList = function(id) {
@@ -76,4 +97,4 @@ angular.module('iaw2017App')
 
         };
 
-    });
+    }]);

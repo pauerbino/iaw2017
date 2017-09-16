@@ -11,8 +11,11 @@ angular.module('iaw2017App')
     $scope.newContact = '';
 
     $scope.saveList = function() {
-        ListService.saveList($scope.list);
-        $location.path('/contacts');
+        //ListService.saveList($scope.list);
+        ListService.saveList($scope.list).then(function() {
+            location.path('/contacts');
+        });
+        //$location.path('/contacts');
     };
 
     $scope.goBack = function() {
@@ -21,13 +24,16 @@ angular.module('iaw2017App')
 
     $scope.addContact = function() {
         $scope.alert = false;
-        var contact = ContactService.findContactByUserName($scope.newContact);
-        if (contact) {
-            $scope.list.contacts.push(contact);
-        } else {
-            $scope.alert = true;
-        }
-        $scope.newContact = '';
+        //var contact = ContactService.findContactByUserName($scope.newContact);
+        ContactService.findContactByUserName($scope.newContact).then(function(contact) {
+            if (contact) {
+                $scope.list.contacts.push(contact);
+            } else {
+                $scope.alert = true;
+            }
+            $scope.newContact = '';
+        });
+        
     };
 
     $scope.removeContact = function(id) {

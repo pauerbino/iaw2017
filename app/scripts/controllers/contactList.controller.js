@@ -6,14 +6,20 @@ angular.module('iaw2017App')
     $scope.list = {};
 
     function initialize() {
-        $scope.list = ListService.getList($routeParams.id);
+        ListService.getList($routeParams.id).then(function (list){
+            $scope.list = list;
+        });
+        //$scope.list = ListService.getList($routeParams.id);
     }
 
     initialize();
 
     $scope.deleteList = function() {
-        ListService.deleteList($routeParams.id);
-        $location.path("/contacts");
+        ListService.deleteList($routeParams.id).then(function (){
+            $location.path("/contacts");
+        });
+        //ListService.deleteList($routeParams.id);
+        //$location.path("/contacts");
     };
 
     $scope.editList = function() {
@@ -21,11 +27,15 @@ angular.module('iaw2017App')
     };
 
     $scope.deleteContactFromList = function(id) {
-        ListService.deleteContactFromList($routeParams.id, id);
-        initialize();
+        ListService.deleteContactFromList($routeParams.id, id).then(function (){
+            initialize();
+        });
+
+        //ListService.deleteContactFromList($routeParams.id, id);
+        //initialize();
     };
 
     $scope.editContactFromList = function(id) {
-        $location.path("/editContact/"+ id);
+       $location.path("/editContact/"+ id);
     };
   }]);

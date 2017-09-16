@@ -5,7 +5,10 @@ angular.module('iaw2017App')
     $scope.lists = [];
 
     function initialize() {
-        $scope.lists = ListService.getLists();
+        ListService.getLists().then(function (lists){
+            $scope.lists = lists;
+        });
+        //$scope.lists = ListService.getLists();
     }
 
     initialize();
