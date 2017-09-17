@@ -45,11 +45,12 @@ angular.module('iaw2017App')
 
         this.getUser = function(username) {
             var deferred = $q.defer();
-            
+            var result = users.filter(function (user) {
+                return (user.username === username)
+            });
+
             $timeout(function() {
-                deferred.resolve(users.filter(function (user) {
-                    return (user.username === username)
-                }));
+                deferred.resolve(result);
             }, 500);
 
             return deferred.promise;
@@ -65,7 +66,6 @@ angular.module('iaw2017App')
             });
 
             $timeout(function() {
-                console.log(result);
                 if (result.length > 0)
                     deferred.resolve(true);
                 else
@@ -83,4 +83,29 @@ angular.module('iaw2017App')
             //    return false;
         }
 
+        this.createUser = function(user) {
+            var deferred = $q.defer();
+            var result = users.filter(function (u) {
+                    return (u.username === user.username || u.email == user.email)
+            });
+
+            $timeout(function() {
+                if (result.length > 0){
+                    users.push({id: 4, username: user.username, password: user.password, name: user.name, lastName: user.lastName, email: user.email, phone: user.phone});
+                    deferred.resolve(false);
+                }
+                else
+                    deferred.resolve(true);
+            }, 500);
+
+            return deferred.promise;
+            // var index = users.find(username === user.username && password === user.password);
+            //var index = users.filter(function (user) {
+            //    return (user.username === userLogged.username && user.password == userLogged.password)
+            //});
+            //if (index.length > 0)
+            //    return true;
+            //else
+            //    return false;
+        }
     }]);

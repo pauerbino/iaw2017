@@ -6,13 +6,32 @@ angular.module('iaw2017App')
     $scope.lists = [];
     $scope.searchSelectAllSettings = { enableSearch: true, showSelectAll: true, keyboardControls: true };
     $scope.searchSelectAllModel = [];
+    $scope.contacts = [];
 
     function initialize() {
         ListService.getLists().then(function (lists){
             $scope.lists = lists;
         });
+        ContactService.getContacts().then(function (contacts){
+            $scope.contacts = contacts;
+        });
     }
 
     initialize();
+
+    $scope.newContact = function(contact) {
+        console.log(contact);
+        ContactService.createContact(contact).then(function(result) {
+            if (result){
+                ContactService.getContacts().then(function (contacts){
+                    $scope.contacts = contacts;
+                });
+                $location.path('/myContacts');
+            }
+            else {
+                $location.path('/newContact');
+            }
+        });
+    }
 $scope.example1model = []; $scope.example1data = [ {id: 1, label: "David"}, {id: 2, label: "Jhon"}, {id: 3, label: "Danny"} ];
   }]);

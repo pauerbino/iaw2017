@@ -3,8 +3,10 @@ angular.module('iaw2017App')
   .controller('LoginCtrl', ['$location', '$scope', 'UserService', function ( $location, $scope, UserService) {
 
     $scope.users = [];
+    $scope.error = '';
 
     function initialize() {
+        $scope.error = '';
         UserService.getUsers().then(function(users) {
             $scope.users = users;
         });
@@ -20,6 +22,7 @@ angular.module('iaw2017App')
             else{
                 user.username = "";
                 user.password = "";
+                $scope.error = 'Invalid username or password.'
                 $location.path('/login');
             }
         });

@@ -59,7 +59,17 @@ angular
         controller: 'MyCampaignsCtrl',
         controllerAs: 'vm'
       })
+      .when('/registerMe', {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterCtrl',
+        controllerAs: 'vm'
+      })
+      .when('/home', {
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl',
+        controllerAs: 'vm'
+      })
       .otherwise({
-        redirectTo: '/contacts'
+        redirectTo: '/home'
       });
   });

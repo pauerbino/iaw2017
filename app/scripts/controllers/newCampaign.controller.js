@@ -28,7 +28,9 @@ angular.module('iaw2017App')
                     CampaignService.newCampaign(campaign, user[0].id, listSize).then(function(result) {
                     //var result = CampaignService.newCampaign(campaign, user[0].id, listSize);
                         if (result){
-                            $scope.campaigns = CampaignService.getCampaigns();
+                            CampaignService.getCampaigns().then(function (campaigns){
+                                $scope.campaigns = campaigns;
+                            });
                             $location.path('/myCampaigns');
                         }
                         else {

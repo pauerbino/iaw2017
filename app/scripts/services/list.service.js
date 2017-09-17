@@ -10,6 +10,7 @@ angular.module('iaw2017App')
                         id: 1,
                         name: "John",
                         lastName: "Mayer",
+                        username: "john.mayer",
                         email: "johnmayer@gmail.com",
                         phone: "4525792"
                     },
@@ -17,6 +18,7 @@ angular.module('iaw2017App')
                         id: 2,
                         name: "Boris",
                         lastName: "Grey",
+                        username: "boris.grey",
                         email: "borisgrey@gmail.com",
                         phone: "4525792"
                     },
@@ -24,6 +26,7 @@ angular.module('iaw2017App')
                         id: 3,
                         name: "Emma",
                         lastName: "Black",
+                        username: "emma.black",
                         email: "emmablack@gmail.com",
                         phone: "4525792"
                     }
@@ -36,6 +39,7 @@ angular.module('iaw2017App')
                         id: 1,
                         name: "John",
                         lastName: "Mayer",
+                        username: "john.mayer",
                         email: "johnmayer@gmail.com",
                         phone: "4525792"
                     },
@@ -43,6 +47,7 @@ angular.module('iaw2017App')
                         id: 2,
                         name: "Boris",
                         lastName: "Grey",
+                        username: "boris.grey",
                         email: "borisgrey@gmail.com",
                         phone: "4525792"
                     },
@@ -50,6 +55,7 @@ angular.module('iaw2017App')
                         id: 3,
                         name: "Emma",
                         lastName: "Black",
+                        username: "emma.black",
                         email: "emmablack@gmail.com",
                         phone: "4525792"
                     }
@@ -94,7 +100,14 @@ angular.module('iaw2017App')
         };
 
         this.saveList = function(list) {
+            var deferred = $q.defer();
 
+            $timeout(function() {
+                var result = lists.push(list);
+                deferred.resolve(result);
+            }, 500);
+
+            return deferred.promise;
         };
 
     }]);

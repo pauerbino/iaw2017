@@ -7,6 +7,7 @@
 
 body {
   padding: 0;
+  text-align: center;
   background-image: url("../images/digital-marketing.jpg");
 }
 
@@ -85,4 +86,17 @@ html, body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+.botonClasico {
+    color: #fff;
+    background-color: #99ccff;
+    border-color: #99ccff;
+    display: inline-block;
+    padding: 6px 12px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 4px;
 }

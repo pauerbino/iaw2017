@@ -4,7 +4,8 @@ angular.module('iaw2017App')
     function ( $location, $routeParams, $scope, ContactService, ListService) {
 
     $scope.list = {
-        name: 'dass',
+        id: 3,
+        name: '',
         contacts: []
     };
 
@@ -13,7 +14,7 @@ angular.module('iaw2017App')
     $scope.saveList = function() {
         //ListService.saveList($scope.list);
         ListService.saveList($scope.list).then(function() {
-            location.path('/contacts');
+            $location.path('/contacts');
         });
         //$location.path('/contacts');
     };
@@ -26,8 +27,9 @@ angular.module('iaw2017App')
         $scope.alert = false;
         //var contact = ContactService.findContactByUserName($scope.newContact);
         ContactService.findContactByUserName($scope.newContact).then(function(contact) {
-            if (contact) {
-                $scope.list.contacts.push(contact);
+            if (contact.length > 0) {
+                $scope.list.contacts.push(contact[0]);
+                console.log($scope.list);
             } else {
                 $scope.alert = true;
             }
@@ -37,7 +39,7 @@ angular.module('iaw2017App')
     };
 
     $scope.removeContact = function(id) {
-
+        $scope.list.contacts.splice($scope.list.contacts.indexOf(id), 1);  
     };
 
   }]);
