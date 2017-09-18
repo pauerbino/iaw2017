@@ -7,6 +7,8 @@ angular.module('iaw2017App')
     $scope.searchSelectAllSettings = { enableSearch: true, showSelectAll: true, keyboardControls: true };
     $scope.searchSelectAllModel = [];
     $scope.contacts = [];
+    $scope.example1model = []; 
+    $scope.example1data = [ {id: 1, label: "David"}, {id: 2, label: "Jhon"}, {id: 3, label: "Danny"} ];
 
     function initialize() {
         ListService.getLists().then(function (lists){
@@ -33,5 +35,4 @@ angular.module('iaw2017App')
             }
         });
     }
-$scope.example1model = []; $scope.example1data = [ {id: 1, label: "David"}, {id: 2, label: "Jhon"}, {id: 3, label: "Danny"} ];
   }]);
